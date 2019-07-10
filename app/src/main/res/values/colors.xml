@@ -3,4 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="mass">#36e072</color>
+    <color name="tare">#e0e036</color>
+    <color name="zero">#36b6e0</color>
 </resources>
