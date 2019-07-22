@@ -17,6 +17,7 @@ import android.widget.Toast;
  * В дальнейшем именно сюда будут добавлены методы для передачи и получения данных
  * */
 
+
 public class BluetoothInstruments {
 
     private BluetoothAdapter mBluetoothAdapter;
