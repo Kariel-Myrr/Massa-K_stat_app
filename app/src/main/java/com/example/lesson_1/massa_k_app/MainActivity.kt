@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
-    fun setUIparametres(){
+    fun setUIparametres(){    // parameters are being set in UI, for now it is being done manually, should be done automatically than
         var par = getParametres()
         var Mass : Float
         var Tare : Float
