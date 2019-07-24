@@ -13,9 +13,9 @@ import android.widget.Toast;
  * На данный момент присутствуют метода для включения bluetooth (enableBT()) и отключения bluetooth (disableBT())
  * После окончания работы с объектом данного класса необходимо
  * вызвать метод finish() для закрытия широковещательных каналов
- *
+ * <p>
  * В дальнейшем именно сюда будут добавлены методы для передачи и получения данных
- * */
+ */
 
 
 public class BluetoothInstruments {
@@ -36,9 +36,8 @@ public class BluetoothInstruments {
         mainActivity.unregisterReceiver(mBroadcastReciever1);
     }
 
-    // Включение bluetooth
-    public void enableBT() {
 
+    public void enableBT() {
         // Если связь не была установлена, выводим сообщени об ошибке
         if (mBluetoothAdapter == null) {
             Toast.makeText(mainActivity, "Возможно, данное устройство не поддерживает Bluetooth соединение",
@@ -47,11 +46,7 @@ public class BluetoothInstruments {
 
         // Если bluetooth выключен, включаем
         if (!mBluetoothAdapter.isEnabled()) {
-            Intent enableBTIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            mainActivity.startActivity(enableBTIntent);
-
-            IntentFilter BTIntent = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            mainActivity.registerReceiver(mBroadcastReciever1, BTIntent);
+            mBluetoothAdapter.enable();
         }
 
         // Если bluetooth включён, выводим сообщение об этом

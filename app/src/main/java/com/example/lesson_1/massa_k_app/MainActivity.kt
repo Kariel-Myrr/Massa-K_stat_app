@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     Передаём параметром текущую activity, чтобы можно было выовдить сообщения
     при включении, отключении bluetooth или в случае ошибок
     Объект сделан неизменяемым, чтобы избежать случайных ошибок*/
-    val bluetoothInstruments = BluetoothInstruments(this)
+    private val bluetoothInstruments = BluetoothInstruments(this)
 
     /**TODO
      *  Разобраться с тем, за что отвечает параметр z и нужен ли он вообще
