@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.weight_main)
-        weight_display.setOnClickListener(::displayWeight)
+        mass_display.setOnClickListener(::displayWeight)
     }
 
 

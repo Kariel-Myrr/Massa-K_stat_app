@@ -2,8 +2,12 @@ package com.example.lesson_1.massa_k_app
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 
 class measurement : AppCompatActivity() {
+
+    lateinit var mConfirmBtn : Button
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
