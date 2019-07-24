@@ -12,7 +12,7 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/weight"
+                android:id="@+id/weight_display"
                 android:layout_centerInParent="true"
                 android:text="Взвесить"
                 android:textSize="30sp"
