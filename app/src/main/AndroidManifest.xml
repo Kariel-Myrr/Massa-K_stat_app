@@ -11,7 +11,7 @@
             android:theme="@style/AppTheme">
         <activity android:name=".activity_weight_distr">
         </activity>
-        <activity android:name=".activity_weight_second">
+        <activity android:name=".measurement">
         </activity>
         <activity android:name=".activity_settings">
         </activity>
