@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">massa_k_app</string>
+    <string name="app_name">Massa-k Terminal</string>
+    <string name="title_activity_main_bottom"> </string>
 </resources>
