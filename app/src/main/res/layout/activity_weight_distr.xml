@@ -26,8 +26,8 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/wd">
-
+                android:background= "@color/colorAccent"
+        >
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

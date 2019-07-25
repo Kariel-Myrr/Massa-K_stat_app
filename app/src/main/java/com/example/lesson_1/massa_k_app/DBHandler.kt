@@ -16,11 +16,11 @@ class DBHandler(context: Context) : SQLiteOpenHelper(context, DBName, null, DBVe
         var WeightDataName = "WeightData" //имя таблицы
 
         var ID = "id"
-        var Date = "Date"
-        var ShipperName = "Shipper"
-        var Reference = "Ref"
-        var ContainerID = "ContID"
-        var Tare = "Tare"
+        var Date = "date"
+        var ShipperName = "shipper"
+        var Reference = "reference"
+        var ContainerID = "contid"
+        var Tare = "tare"
         var SealID = "SealID"
         var Location = "Location"
         var OperatorName = "Operator"
@@ -31,7 +31,7 @@ class DBHandler(context: Context) : SQLiteOpenHelper(context, DBName, null, DBVe
     var sqlObj: SQLiteDatabase = this.writableDatabase //Сущность SQLiteDatabase
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        var sql1 = "CREATE TABLE IF NOT EXISTS $WeightDataName ( $ID  INTEGER PRIMARY KEY, $Date TEXT $ShipperName TEXT, $Reference TEXT, $ContainerID TEXT, $Tare TEXT, $SealID TEXT, $Location TEXT, $OperatorName Text, $Notes TEXT);"
+        val sql1 = "CREATE TABLE IF NOT EXISTS $WeightDataName ( $ID  INTEGER PRIMARY KEY , $Date TEXT , $ShipperName TEXT , $Reference TEXT , $ContainerID TEXT , $Tare TEXT , $SealID TEXT , $Location TEXT , $OperatorName Text, $Notes TEXT);"
         p0!!.execSQL(sql1)
     }
 
