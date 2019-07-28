@@ -1,5 +1,6 @@
 package com.example.lesson_1.massa_k_app
 
+import android.content.ContentValues
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -49,8 +50,9 @@ class measurement : AppCompatActivity() {
 
     fun AddData() {
         mConfirmBtn.setOnClickListener(View.OnClickListener {
-            val shipper = textShipper.text.toString().trim()
-            val reference = textReference.text.toString().trim()
+
+            val shipper = textShipper.text.toString()
+            val reference = textReference.text.toString()
             val container = textContainerID.text.toString().trim()
             val location = textLocation.text.toString().trim()
             val note = textNote.text.toString().trim()
@@ -69,7 +71,7 @@ class measurement : AppCompatActivity() {
             }
 
             if (TextUtils.isEmpty(container)) {
-                textContainerID.error = "Enter ID of container"
+                textContainerID.error = "Enter id of container"
                 return@OnClickListener
             }
 
@@ -92,16 +94,19 @@ class measurement : AppCompatActivity() {
 
             val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss").toString()
 
-            val isInserted =
-                mDBHandler.addMeasurement(sdf, shipper, reference, container, tare, sealId, location, operator, note)
+           var values = ContentValues()
 
+            values.put(DBHandler.Date, sdf)
+            values.put(DBHandler.ShipperName, shipper)
+            values.put(DBHandler.Reference, reference)
+            values.put(DBHandler.ContainerID, container)
+            values.put(DBHandler.Tare, tare)
+            values.put(DBHandler.SealID, sealId)
+            values.put(DBHandler.Location, location)
+            values.put(DBHandler.OperatorName, operator)
+            values.put(DBHandler.Notes, note)
 
-            if (isInserted == true) {
-                Toast.makeText(applicationContext, "Data inserted ", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(applicationContext, "Data could not be inserted ", Toast.LENGTH_SHORT).show()
-
-            }
+            mDBHandler.addMeasurement(values)
 
         })
 

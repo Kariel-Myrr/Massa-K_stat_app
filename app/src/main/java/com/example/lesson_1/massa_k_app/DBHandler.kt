@@ -15,23 +15,23 @@ class DBHandler(context: Context) : SQLiteOpenHelper(context, DBName, null, DBVe
 
         var WeightDataName = "WeightData" //имя таблицы
 
-        var ID = "id"
+        var id = "id"
         var Date = "date"
         var ShipperName = "shipper"
         var Reference = "reference"
         var ContainerID = "contid"
         var Tare = "tare"
-        var SealID = "SealID"
-        var Location = "Location"
-        var OperatorName = "Operator"
-        var Notes = "Notes"
+        var SealID = "sealid"
+        var Location = "location"
+        var OperatorName = "operator"
+        var Notes = "notes"
 
     }
 
-    var sqlObj: SQLiteDatabase = this.writableDatabase //Сущность SQLiteDatabase
+    private var sqlObj: SQLiteDatabase = this.writableDatabase //Сущность SQLiteDatabase
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        val sql1 = "CREATE TABLE IF NOT EXISTS $WeightDataName ( $ID  INTEGER PRIMARY KEY , $Date TEXT , $ShipperName TEXT , $Reference TEXT , $ContainerID TEXT , $Tare TEXT , $SealID TEXT , $Location TEXT , $OperatorName Text, $Notes TEXT);"
+        var sql1 = "CREATE TABLE IF NOT EXISTS $WeightDataName( $id  INTEGER PRIMARY KEY , $Date TEXT , $ShipperName TEXT , $Reference TEXT , $ContainerID TEXT , $Tare TEXT , $SealID TEXT , $Location TEXT , $OperatorName Text, $Notes TEXT);"
         p0!!.execSQL(sql1)
     }
 
@@ -40,24 +40,9 @@ class DBHandler(context: Context) : SQLiteOpenHelper(context, DBName, null, DBVe
         onCreate(p0)
     }
 
-    fun addMeasurement(date : String, shipper : String, reference : String, container_id : String, tare : String, seal_id : String, location : String, operator : String, notes : String) : Boolean?{
+    fun addMeasurement(values : ContentValues) = sqlObj.insert(WeightDataName, "", values)
 
 
-        val cv = ContentValues()
-        cv.put(Date, date)
-        cv.put(ShipperName, shipper)
-        cv.put(Reference, reference)
-        cv.put(ContainerID, container_id)
-        cv.put(Tare, tare)
-        cv.put(SealID, seal_id)
-        cv.put(Location, location)
-        cv.put(OperatorName, operator)
-        cv.put(Notes, notes)
-
-        val res = sqlObj.insert(WeightDataName, null, cv)
-
-        return !res.equals(-1)
-    }
 
     fun getAllData(): Cursor {
 
@@ -66,12 +51,12 @@ class DBHandler(context: Context) : SQLiteOpenHelper(context, DBName, null, DBVe
     }
 
     fun getData(id : String): Cursor {
-        return sqlObj.rawQuery("SELECT * FROM $WeightDataName WHERE ID=?", arrayOf(id), null)
+        return sqlObj.rawQuery("SELECT * FROM $WeightDataName WHERE id=?", arrayOf(id), null)
     }
 
     fun updateData(id : String,date : String, shipper : String, reference : String, container_id : String, tare : String, seal_id : String, location : String, operator : String, notes : String) : Boolean? {
         val cv = ContentValues()
-        cv.put(ID, id)
+        cv.put(id, id)
         cv.put(Date, date)
         cv.put(ShipperName, shipper)
         cv.put(Reference, reference)
@@ -81,12 +66,12 @@ class DBHandler(context: Context) : SQLiteOpenHelper(context, DBName, null, DBVe
         cv.put(Location, location)
         cv.put(OperatorName, operator)
         cv.put(Notes, notes)
-        sqlObj.update(WeightDataName, cv, "ID=?", arrayOf(id))
+        sqlObj.update(WeightDataName, cv, "id=?", arrayOf(id))
         return true
     }
 
     fun deleteData(id : String): Int?{
-        return sqlObj.delete(WeightDataName, "ID=?", arrayOf(id))
+        return sqlObj.delete(WeightDataName, "id=?", arrayOf(id))
     }
 
 }
