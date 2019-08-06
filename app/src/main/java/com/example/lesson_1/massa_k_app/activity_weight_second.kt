@@ -76,8 +76,13 @@ class activity_weight_second : AppCompatActivity() {
 
 
         weight_distr.setOnClickListener {
-            val intent = Intent(this, activity_weight_distr::class.java)
-            startActivity(intent)
+            val intent1 = Intent(this, activity_weight_distr::class.java)
+            startActivity(intent1)
+        }
+
+        details.setOnClickListener {
+            val intent2 = Intent(this, activityWeightDetails::class.java)
+            startActivity(intent2)
         }
 
         setUIparametres()
