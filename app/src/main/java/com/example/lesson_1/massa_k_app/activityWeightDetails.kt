@@ -4,12 +4,17 @@ import android.content.ContentValues
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import java.text.SimpleDateFormat
 import kotlinx.android.synthetic.main.activity_weight_details.*
+import java.util.*
+//import jdk.nashorn.internal.objects.NativeDate.getTime
+
+
 
 class activityWeightDetails : AppCompatActivity() {
 
@@ -93,8 +98,11 @@ class activityWeightDetails : AppCompatActivity() {
                 return@OnClickListener
             }
 
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss").toString()
 
+            val df = SimpleDateFormat("EEE, d MMM yyyy, HH:mm")
+            val sdf = df.format(Calendar.getInstance().time)
+
+          //  val sdf = getDateTimeInctance()
             var values = ContentValues()
 
             values.put(DBHandler.Date, sdf)
@@ -108,6 +116,7 @@ class activityWeightDetails : AppCompatActivity() {
             values.put(DBHandler.Notes, note)
 
             mDBHandler.addMeasurement(values)
+            Log.d("FLAG_TAG", "Measurment added. Date: $sdf. ShipperName: $shipper. Reference: $reference. Container ID: $container. Tare: $tare. Seal ID: $sealId. Location: $location. Operator name: $operator. Notes: $note")
 
         })
 

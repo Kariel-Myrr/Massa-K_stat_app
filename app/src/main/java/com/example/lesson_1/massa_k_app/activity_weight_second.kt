@@ -64,7 +64,7 @@ class activity_weight_second : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weight_second)
 
-        bluetoothInstruments.enableBT()     // Включаем bluetooth при запуске программы
+       // bluetoothInstruments.enableBT()     // Включаем bluetooth при запуске программы
 
         var Mass : Float
         var Tare : Float
@@ -91,8 +91,8 @@ class activity_weight_second : AppCompatActivity() {
     }
     // При закрытии программы сначала отключаем bluetooth, потом закрываем все широковещательные каналы
     override fun onDestroy() {
-        bluetoothInstruments.disableBT()    // Отключаем bluetooth
-        bluetoothInstruments.finish()       // Закрываем широковещательные каналы
+      //  bluetoothInstruments.disableBT()    // Отключаем bluetooth
+       // bluetoothInstruments.finish()       // Закрываем широковещательные каналы
         super.onDestroy()
     }
 }
