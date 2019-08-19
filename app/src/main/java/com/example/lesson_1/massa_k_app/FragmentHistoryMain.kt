@@ -56,6 +56,8 @@ class FragmentHistoryMain : Fragment() {
                 buffer.append("Salary: " + res.getString(3) + "\n\n")
 
 
+                
+
 
                 val txtItem = TextView(context)
                 txtItem.text = buffer
